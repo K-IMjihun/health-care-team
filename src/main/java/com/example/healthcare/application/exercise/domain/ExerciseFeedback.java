@@ -1,11 +1,14 @@
 package com.example.healthcare.application.exercise.domain;
 
+import com.example.healthcare.application.account.domain.User;
 import com.example.healthcare.application.exercise.service.dto.ExerciseFeedbackDTO;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 @Entity
 @Getter
@@ -17,20 +20,16 @@ public class ExerciseFeedback {
     private Long id;
 
     //피드백 요청 유저
-
-//    @OneToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name = "exercise_id", nullable = false)
-//    @JsonBackReference
-//    private Exercise exercise;
-
-    @Column(name = "video_url", nullable = false)
-    private String videoUrl;
-
+    private Long userId;
+    //피드백 응답 트레이너
+    private Long trainerId;
+    //피드백 요청 유저의 메시지
     @Column(name = "feedback_message")
     private String feedbackMessage;
 
-    public ExerciseFeedback(ExerciseFeedbackDTO dto){
-        this.videoUrl = dto.videoUrl();
+    public ExerciseFeedback(Long userId, ExerciseFeedbackDTO dto){
+        this.userId = userId;
+        this.trainerId = dto.trainer_id();
         this.feedbackMessage = dto.feedbackMessage();
     }
 }

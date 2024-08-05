@@ -5,6 +5,9 @@ import com.example.healthcare.application.exercise.service.dto.ExerciseFeedbackD
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -16,7 +19,8 @@ public class ExerciseCmController {
     // 운동 피드백 요청
     @PostMapping("/{user-id}")
     public void getUser(@PathVariable(value = "user-id") Long userId,
+                        @RequestPart(value = "feedback-video") List<MultipartFile> feedbackVideo,
                         @Valid @RequestBody ExerciseFeedbackDTO dto) {
-        exerciseCmService.exerciseFeedback(userId, dto);
+        exerciseCmService.exerciseFeedback(userId, feedbackVideo, dto);
     }
 }

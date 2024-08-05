@@ -34,3 +34,17 @@ jwt:
       expiration_time: 600000
     refresh:
       expiration_time: 1800000
+
+cloud:
+  aws:
+    credentials:
+      accessKey: "{엑세스키 입력}"
+      secretKey: "{시크릿키 입력}"
+    stack:
+      auto: false
+
+    s3:
+      bucketName: "{DB명}"
+      region:
+        static: ap-northeast-2
+      bucketUrl: "https://s3.ap-northeast-2.amazonaws.com/{DB명}"

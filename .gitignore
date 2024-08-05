@@ -5,7 +5,9 @@ build/
 !**/src/main/**/build/
 !**/src/test/**/build/
 
-Application-security.properties
+application.yml
+application-dev.yml
+
 
 ### STS ###
 .apt_generated
